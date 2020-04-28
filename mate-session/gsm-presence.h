@@ -35,9 +35,6 @@ struct _GsmPresenceClass
 
         void          (* status_changed)        (GsmPresence     *presence,
                                                  guint            status);
-        void          (* status_text_changed)   (GsmPresence     *presence,
-                                                 const char      *status_text);
-
 };
 
 typedef enum {
@@ -54,9 +51,6 @@ typedef enum
 } GsmPresenceError;
 
 #define GSM_PRESENCE_ERROR gsm_presence_error_quark ()
-GType          gsm_presence_error_get_type       (void);
-#define GSM_PRESENCE_TYPE_ERROR (gsm_presence_error_get_type ())
-
 GQuark         gsm_presence_error_quark          (void);
 
 GsmPresence *  gsm_presence_new                  (void);
@@ -65,14 +59,6 @@ void           gsm_presence_set_idle_enabled     (GsmPresence  *presence,
                                                   gboolean      enabled);
 void           gsm_presence_set_idle_timeout     (GsmPresence  *presence,
                                                   guint         n_seconds);
-
-/* exported to bus */
-gboolean       gsm_presence_set_status           (GsmPresence  *presence,
-                                                  guint         status,
-                                                  GError      **error);
-gboolean       gsm_presence_set_status_text      (GsmPresence  *presence,
-                                                  const char   *status_text,
-                                                  GError      **error);
 
 G_END_DECLS
 
